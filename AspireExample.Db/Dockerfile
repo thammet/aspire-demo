@@ -19,4 +19,4 @@ RUN chmod +x configure-db.sh
 
 RUN ls
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
