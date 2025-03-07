@@ -21,7 +21,7 @@ var frontend = builder.AddNpmApp("frontend", "../AspireExample.Web", "dev") // d
     .WaitFor(playerApi)
     .WithReference(teamApi)
     .WaitFor(teamApi)
-    .WithHttpEndpoint(port: 3000, targetPort: 8080, env: "PORT")
+    .WithHttpEndpoint(port: 80, targetPort: 8080, env: "PORT")
     .WithExternalHttpEndpoints()
     .PublishAsDockerFile(); // use our custom dockerfile when deploying
 
