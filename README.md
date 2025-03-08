@@ -40,8 +40,7 @@ Aspire still has shortcomings
     - You want to run your entire ecosystem with Aspire. Don't try to run just one application.
 - No Hot reloading 
     - At least I couldn't get it to work even though it said it reloaded??
-- Cannot debug single application (VERIFY THIS!)
-
+    
 
 ## Deploying an Aspire Application
 

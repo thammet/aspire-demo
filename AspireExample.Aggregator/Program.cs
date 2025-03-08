@@ -1,5 +1,6 @@
 using AspireExample.Aggregator;
 using AspireExample.Aggregator.Clients;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddHttpClient<TeamServiceClient>(
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddScoped(sp => sp.GetRequiredService<IConnectionMultiplexer>().GetDatabase());
 
 var app = builder.Build();
 

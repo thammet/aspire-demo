@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Aspire.StackExchange.Redis" Version="9.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
+    <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="11.0.0" />
   </ItemGroup>
 
 </Project>
