@@ -1,5 +1,8 @@
 node_modules
 
+# don't want the generated files from azd init and up added to git for this demo
+azure.yaml
+next-steps.md
 
 images/
 
@@ -272,4 +275,4 @@ output
 build 
 
 
-previewer-background.webp
+.azure

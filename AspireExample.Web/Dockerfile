@@ -1,6 +1,20 @@
-FROM node:23-alpine
-RUN npm install --global serve
+FROM node:23
 
-COPY index.html ./
+ARG PLAYER_API
+ARG TEAM_API
 
-ENTRYPOINT ["serve"]
+ENV PLAYER_API=$PLAYER_API
+ENV TEAM_API=$TEAM_API
+
+COPY . /app
+WORKDIR /app
+
+RUN npm i 
+RUN npm run build
+
+
+#EXPOSE 3000
+#ENV PORT=3000
+#ENV HOSTNAME="0.0.0.0"
+
+CMD ["npm", "start"]
