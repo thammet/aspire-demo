@@ -20,8 +20,6 @@ else
     app.UseHttpsRedirection();
 }
 
-
-
 app.MapTeamApiEndpoints();
 
 app.Run();

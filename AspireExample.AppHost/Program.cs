@@ -2,6 +2,8 @@ using Aspire.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+var cache = builder.AddRedis("cache");
+
 var sqlServer = builder.AddSqlServer("sql")
     .WithDockerfile("../AspireExample.Db") // start sql server with custom dockerfile
     // persist sql state
@@ -18,30 +20,25 @@ var teamApi = builder.AddProject<Projects.AspireExample_Team>("teamapi")
     .WithReference(sqlDb)
     .WaitFor(sqlDb);
 
-var frontend = builder.AddNpmApp("frontend", "../AspireExample.Web", "dev") 
-    //builder.AddDockerfile("frontend", "../AspireExample.Web")
+var aggregatorApi = builder.AddProject<Projects.AspireExample_Aggregator>("aggregatorapi")
     .WithReference(playerApi)
     .WaitFor(playerApi)
     .WithReference(teamApi)
     .WaitFor(teamApi)
-    .WithHttpEndpoint(port: 80, targetPort: 8080, env: "PORT")
+    .WithReference(cache);
+
+var frontend = builder.AddNpmApp("frontend", "../AspireExample.Web", "dev") 
+    .WithReference(aggregatorApi)
+    .WaitFor(aggregatorApi)
+    .WithHttpEndpoint(targetPort: 3000)
     .WithExternalHttpEndpoints()
     // set custom env variables for app to use more easily 
-    .WithEnvironment("PLAYER_API", playerApi.GetEndpoint("http")) 
-    .WithEnvironment("TEAM_API", teamApi.GetEndpoint("http"))
-
-    //.WithBuildArg("PLAYER_API", playerApi.GetEndpoint("http"))
-    //.WithBuildArg("TEAM_API", teamApi.GetEndpoint("http"))
-    //.WithBuildArg("PLAYER_API", playerApi)
-    //        .WithBuildArg("TEAM_API", teamApi)
-
+    .WithEnvironment("AGGREGATOR_API", aggregatorApi.GetEndpoint("http")) 
     .PublishAsDockerFile(options =>
     {
         // set custom env variables for app to use more easily 
         options
-
-            .WithBuildArg("PLAYER_API", playerApi)
-            .WithBuildArg("TEAM_API", teamApi);
+            .WithBuildArg("AGGREGATOR_API", aggregatorApi);
     })
     ;
 
