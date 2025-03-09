@@ -58,7 +58,7 @@ You can follow these steps to deploy to Azure
 
 While similar to K8, Aspire is not intended to replace it. There is another tool, [Aspir8](https://learn.microsoft.com/en-us/dotnet/aspire/deployment/overview#deploy-to-kubernetes), for deploying an Aspire application to K8. 
 
-For official deployment documentation, [click here](https://learn.microsoft.com/en-us/dotnet/aspire/deployment/azure/aca-deployment)
+For official deployment documentation, [click here](https://learn.microsoft.com/en-us/dotnet/aspire/deployment/overview)
 
 
 <a id="demo"></a>
@@ -70,6 +70,16 @@ This reposity demonstrates how to use Aspire to launch a distibuted application.
 - sql server via dockerfile 
 - redis cache
 - next.js (react)
+
+# Running AppHost
+
+To run this project you must have .net 9 installed and have docker running. 
+
+To start the app, run the AspireExample.AppHost project. 
+
+> This will start all the apps listed above and open a dashboard. 
+
+Click the url for frontend and a basic webpage will open showing random combos of NBA players and team names. 
 
 # Deployment 
 At root of repo, run these commands (must have [azd installed](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-windows))
