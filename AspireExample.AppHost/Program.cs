@@ -8,6 +8,7 @@ var cache = builder.AddRedis("cache");
 
 var sqlServer = builder.AddSqlServer(ServiceNames.Sql)
     .WithDockerfile("../AspireExample.Db") // start sql server with custom dockerfile
+    .WithImageTag("latest")
     // persist sql state
     .WithDataVolume();
 
