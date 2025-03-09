@@ -1,13 +1,13 @@
+using AspireExample.Constants;
 using AspireExample.Player;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-builder.Services.AddOpenApi();
+builder.AddSqlServerClient(ServiceNames.SqlDb);
 
-// matches AddDatabase call in AppHost
-builder.AddSqlServerClient("AspireExample");
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 

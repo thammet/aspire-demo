@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireExample.Team", "Aspir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireExample.Aggregator", "AspireExample.Aggregator\AspireExample.Aggregator.csproj", "{029309CA-E0D3-8EBF-12DD-C3D70D5F5145}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireExample.Tests", "AspireExample.Tests\AspireExample.Tests.csproj", "{0E61A1C5-DC10-43AF-B64B-DDE91A27482F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireExample.Constants", "AspireExample.Constants\AspireExample.Constants.csproj", "{FE9A0ADA-1DBC-4DE0-BBCF-2D24C933F712}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{029309CA-E0D3-8EBF-12DD-C3D70D5F5145}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{029309CA-E0D3-8EBF-12DD-C3D70D5F5145}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{029309CA-E0D3-8EBF-12DD-C3D70D5F5145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E61A1C5-DC10-43AF-B64B-DDE91A27482F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E61A1C5-DC10-43AF-B64B-DDE91A27482F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E61A1C5-DC10-43AF-B64B-DDE91A27482F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E61A1C5-DC10-43AF-B64B-DDE91A27482F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE9A0ADA-1DBC-4DE0-BBCF-2D24C933F712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9A0ADA-1DBC-4DE0-BBCF-2D24C933F712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9A0ADA-1DBC-4DE0-BBCF-2D24C933F712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9A0ADA-1DBC-4DE0-BBCF-2D24C933F712}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

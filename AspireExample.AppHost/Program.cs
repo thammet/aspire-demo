@@ -1,33 +1,34 @@
 using Aspire.Hosting;
+using AspireExample.Constants;
+
 
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
 
-var sqlServer = builder.AddSqlServer("sql")
+var sqlServer = builder.AddSqlServer(ServiceNames.Sql)
     .WithDockerfile("../AspireExample.Db") // start sql server with custom dockerfile
     // persist sql state
-    .WithDataVolume()
-    .WithLifetime(ContainerLifetime.Persistent);
+    .WithDataVolume();
 
-var sqlDb = sqlServer.AddDatabase("AspireExample");
+var sqlDb = sqlServer.AddDatabase(ServiceNames.SqlDb);
 
-var playerApi = builder.AddProject<Projects.AspireExample_Player>("playerapi")
+var playerApi = builder.AddProject<Projects.AspireExample_Player>(ServiceNames.PlayerApi)
     .WithReference(sqlDb)
     .WaitFor(sqlDb);
 
-var teamApi = builder.AddProject<Projects.AspireExample_Team>("teamapi")
+var teamApi = builder.AddProject<Projects.AspireExample_Team>(ServiceNames.TeamApi)
     .WithReference(sqlDb)
     .WaitFor(sqlDb);
 
-var aggregatorApi = builder.AddProject<Projects.AspireExample_Aggregator>("aggregatorapi")
+var aggregatorApi = builder.AddProject<Projects.AspireExample_Aggregator>(ServiceNames.AggregatorApi)
     .WithReference(playerApi)
     .WaitFor(playerApi)
     .WithReference(teamApi)
     .WaitFor(teamApi)
     .WithReference(cache);
 
-var frontend = builder.AddNpmApp("frontend", "../AspireExample.Web", "dev") 
+var frontend = builder.AddNpmApp(ServiceNames.Frontend, "../AspireExample.Web", "dev") 
     .WithReference(aggregatorApi)
     .WaitFor(aggregatorApi)
     .WithHttpEndpoint(targetPort: 3000)
